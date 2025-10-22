@@ -1,0 +1,232 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    background-attachment: fixed;
+}
+
+/* Container for centering content */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Header styles */
+.header {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+/* Main content area */
+.main-content {
+    padding: 40px;
+}
+
+/* Poll list styles */
+.poll-list {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.poll-list li {
+    margin-bottom: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #3498db;
+}
+
+.poll-list li:hover {
+    transform: translateX(5px);
+    background: #e3f2fd;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.poll-list a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.poll-list a:hover {
+    color: #3498db;
+}
+
+/* Form styles */
+.poll-form {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+fieldset {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 25px;
+    background: white;
+}
+
+legend h1 {
+    color: #2c3e50;
+    font-size: 1.8em;
+    font-weight: 400;
+    padding: 0 15px;
+}
+
+/* Choice styles */
+.choice-item {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.choice-item:hover {
+    background: #e9ecef;
+}
+
+.choice-item input[type="radio"] {
+    margin-right: 15px;
+    transform: scale(1.2);
+}
+
+.choice-item label {
+    font-size: 1.1em;
+    color: #495057;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Button styles */
+.btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+/* Error message */
+.error-message {
+    background: #e74c3c;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Results page styles */
+.results-container {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.result-item {
+    margin: 20px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.vote-count {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.percentage {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1em;
+}
+
+/* No polls message */
+.no-polls {
+    text-align: center;
+    color: #6c757d;
+    font-size: 1.2em;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        border-radius: 10px;
+    }
+    
+    .main-content {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .poll-list a {
+        padding: 15px;
+        font-size: 1em;
+    }
+}
+
+/* Animation for vote counting */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.poll-list li, .choice-item, .result-item {
+    animation: slideIn 0.5s ease-out;
+}

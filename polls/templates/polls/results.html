@@ -1,9 +1,40 @@
-<h1>{{ question.question_text }}</h1>
-
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
-
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - {{ question.question_text }}</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 Poll Results</h1>
+        </div>
+        
+        <div class="main-content">
+            <h1>{{ question.question_text }}</h1>
+            
+            <div class="results-container">
+                {% for choice in question.choice_set.all %}
+                    <div class="result-item">
+                        <strong>{{ choice.choice_text }}</strong>
+                        <div class="vote-count">
+                            <span class="percentage">{{ choice.votes }} vote{{ choice.votes|pluralize }}</span>
+                            ({{ choice.percentage|default:0 }}%)
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <a href="{% url 'polls:detail' question.id %}" class="btn" style="display: inline-block; text-decoration: none;">
+                Vote Again?
+            </a>
+            <a href="{% url 'polls:index' %}" class="btn" style="display: inline-block; text-decoration: none; background: linear-gradient(135deg, #27ae60, #229954); margin-left: 10px;">
+                Back to Polls
+            </a>
+        </div>
+    </div>
+</body>
+</html>
